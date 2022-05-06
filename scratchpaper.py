@@ -22,7 +22,7 @@ def place(answer):
         answer = (input("Are you happy with this destination?"))
         if answer == "yes":
             print("That's a beautiful place to visit!")
-            return confirmation [0]
+            return
             break
         elif answer =="no": 
             (input(("I'm sorry to hear that." + " " + "How about" + " " + (random.choice(destinations)) + " " + "instead?")))
