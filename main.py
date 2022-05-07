@@ -4,8 +4,8 @@ import random
 #lists
 destinations = ["New York", "Orlando",  "Honolulu", "San Diego", "Paris", "Shanghai"]
 restaurants = ["McDonald's", "Taco Bell", "KFC", "Albertos Mexican Food", "Pizza hut", "Panda Express"]
-transportation = ["Private Jet", "Uber", "Bullet train", "Lambroghini rental car"]  
-entertainment = ["a show", "a ballet", "mountain biking", "surfing", "roller blading", "sight seeing"]
+transportation = ["a private Jet", "an Uber", "a bullet train", "a Lambroghini rental car"]  
+entertainment = ["watching a show", "going to a ballet", "mountain biking", "surfing", "roller blading", "site seeing"]
 day_trip = ["xxxx"]  #['xxxx', 'destination, 'restaurant', 'transporation, 'entertainent']
 
 #variables
@@ -17,19 +17,30 @@ random_entertainment = random.choice(entertainment)
 
 print("Welcome to your day trip planner!")
 
-
+# destination selection
 
 def place(answer):
-    print("We have selected" + " " + random.choice(destinations) + " " + "as your destination.")
+    random_destination = random.choice(destinations)
+    day_trip.append (random_destination)
+    
+    print(" ")
+    print("We have selected" + " " + (day_trip[1]) + " " + "as your destination.")
+    print(" ")
+
     while True: 
-        answer = (input("Are you happy with this ?"))
+        answer = (input("Are you happy with this?"))
         if answer == "yes":
+            print(" ")
             print("Truly a wonderful place!")
-            return
+            print(" ")
             break
         elif answer =="no": 
-            (input(("Sorry to hear that." + " " + "How about" + " " + random.choice(destinations) + " " + "instead?")))
+            day_trip.pop()                                          #removes last random value
             random_destination = random.choice(destinations)
+            day_trip.append (random_destination)
+            print(" ")
+            print("Sorry to hear that." + " " + "We've rebooked you to" + " " + random_destination + " " + "instead.")
+            print(" ")
             continue
         else: 
             print("Enter yes or no")
@@ -37,102 +48,131 @@ def place(answer):
 
 place("yes" or "no")
 
-day_trip.append (random_restaurant)
 print ("We've go you booked for" + " " + day_trip[1] + "!")
-print("We hope you enjoy your meal.")
 
 # meal selection
 
-print("A fine meal to enjoy for sure!")
-
 def food(answer):
-    print("Next we have planned a wonderful meal at" + " " + random.choice(restaurants)+ ".")
+    random_restaurant = random.choice(restaurants)
+    day_trip.append (random_restaurant)
+
+    print(" ")
+    print("We have booked a table at" + " " + (day_trip[2]) + " " + "for a perfect meal.")
+    print(" ")
+
     while True: 
-        answer = (input("Are you happy with this destination?"))
+        answer = (input("Are you happy with this?"))
         if answer == "yes":
-            print("That's a beautiful place to visit!")
-            return
+            print(" ")
+            print("A gastronomic adventure like no other!")
+            print(" ")
             break
         elif answer =="no": 
-            (input(("I'm sorry to hear that." + " " + "How about" + " " + random.choice(restaurants) + " " + "instead?")))
+            day_trip.pop()
             random_restaurant = random.choice(restaurants)
+            day_trip.append (random_restaurant)
+            print(" ")
+            print("Sorry to hear that." + " " + "We've rebooked you eat at" + " " + random_restaurant + " " + "instead.")
+            print(" ")
             continue
         else: 
             print("Enter yes or no")
             break   
 
-day_trip.append (random_restaurant)
-print ("We've go you booked for" + " " + day_trip[2] + "!")
-print("We hope you enjoy your meal.")
 food("yes" or "no")
 
+print("You are confirmed for" + " " + day_trip[2] + "!")
 
+# transportation selector
 
+def transport(answer):
+    random_transportation = random.choice(transportation)
+    day_trip.append (random_transportation)
+    print(" ")
+    print("For your mode of transportation we have chosen" + " " + (day_trip[3]) + " " + "for you.")
+    print(" ")
+    while True: 
+        answer = (input("Are you happy with this?"))
+        if answer == "yes":
+            print(" ")
+            print("Lets go!!")
+            print(" ")
+            break
+        elif answer =="no": 
+            day_trip.pop()
+            random_transportation = random.choice(transportation)
+            day_trip.append (random_transportation)
+            print(" ")
+            print("Maybe a bit too slow for you I guess..." + " " + "How about" + " " + random_transportation + " " + "instead?")
+            print(" ")
+            continue
+        else: 
+            print("Enter yes or no")
+            break   
 
+transport("yes" or "no")
 
+print("You are confirmed for" + " " + day_trip[3] + " " + "on your day trip.")
 
-# def food(answer): #meal selector
-#     while True: 
-#         answer = (input("Are you happy with this meal selection?"))
-#         if answer == "yes":
-#             break 
-#         elif answer == "no": 
-#             (input(("I'm sorry to hear that." + " " + "How about" + " " + random.choice(restaurants) + " " + "instead?")))
-#             continue
-#         else: 
-#             print("Enter yes or no")
-#             break   
+# entertainment
 
-# food("yes" or "no")  
-
-# print("Excellent choice!")
-# print("for your mode of transportation we have chosen" + " " + random_transportation + " " + "for you.")
-        
-# def transport(answer): #transportation selector
-#     while True: 
-#         answer = (input("Are you happy with this mode of transport?"))
-#         if answer == "yes":
-#             break 
-#         elif answer =="no": 
-#             (input(("Agreed, that selection was lame." + " " + "How about" + " " + random.choice(transportation) + " " + "instead?")))
-#             continue
-#         else: 
-#             print("Enter yes or no")
-#             break   
+def to_do(answer):
+    random_entertainment = random.choice(entertainment)
+    day_trip.append (random_entertainment)
     
-# transport("yes" or "no")
+    print("For your enjoyment we have booked an afternoon" + " " + (day_trip[4]) + " " + "for you.")
+    print(" ")
+    while True: 
+        answer = (input("Are you happy with this?"))
+        if answer == "yes":
+            print(" ")
+            print("Lets go!!")
+            print(" ")
+            break
+        elif answer =="no": 
+            day_trip.pop()
+            random_entertainment = random.choice(entertainment)
+            day_trip.append (random_entertainment)
+            print(" ")
+            print("Maybe a bit too slow for you I guess..." + " " + "How about" + " " + random_entertainment + " " + "instead?")
+            print(" ")
+            continue
+        else: 
+            print("Enter yes or no")
+            break   
 
-# print ("This day trip is looking awesome!")
-# print ("Up next, we've selected" + " " + random_entertainment + " " + "for you.")
+to_do("yes" or "no")
 
-# def fun_stuff(answer): #entertainment selector
-#     while True: 
-#         answer = (input("Are you feeling this choice?"))
-#         if answer == "yes":
-#             break 
-#         elif answer =="no": 
-#             (input(("Agreed, that selection was not a good fit." + " " + "How about" + " " + random.choice(entertainment) + " " + "instead?")))
-#             continue
-#         else: 
-#             print("Enter yes or no")
-#             break   
+print("You are confirmed for" + " " + day_trip[4] + " " + "on your day trip.")
 
-# fun_stuff("yes" or "no")
+print(" ")
 
-# input("Once you are happy with these selections, please confirm your daytrip as complete by typing 'Complete'")
-# if(input == "Complete"):
-#     print("We're glad you enjoyed your day trip")
-# else:
-#     print("Maybe you need to hire a better day trip planner.")
+print("To comfirm, here is your itinerary for the day. You will be visiting the city of" + " " + day_trip[1] + ".")
 
+print(" ")
 
-# # #destination function
+print("You will be enjoying a wonderful meal at" + " " + day_trip[2] + ".")
 
-# # # def get_random_destination(rand_des):
-# # #     rand_des = random.randrange(len(destinations))
-# # #     rand_loc = destinations[rand_des]
-# # #     print (rand_loc)
-# # #     return
+print(" ")
 
+print("For your transporation, we have booked" + " " + day_trip[3] + ".")
 
+print(" ")
+
+print("And finally, for your day's entertainment, you will be spending the rest of the day" + " " + day_trip[4])
+
+print(" ")
+
+confirmation = input("Are you happy with this Itinerary?")
+if confirmation == ("yes"):
+    print(" ")
+    print("Enjoy your special trip!")
+else:
+    print(" ")
+    print("Ok... let's start over")
+    print(" ")
+    print("Welcome... AGAIN to your day trip planner.")
+    print(" ")
+    place("yes" or "no")
+    
 
